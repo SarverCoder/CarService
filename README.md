@@ -1,4 +1,4 @@
-# Car Service
+# CarService
 
 Avtomobil ta'mirlash ustaxonasi va ehtiyot qismlar do'koni uchun veb-sayt.
 
