@@ -1,0 +1,19 @@
+{
+  "brand": "Car Service",
+  "nav": { "home": "Bosh sahifa", "services": "Xizmatlar", "parts": "Ehtiyot qismlar", "booking": "Yozilish" },
+  "home": {
+    "title": "Mashinangiz uchun ishonchli ustaxona",
+    "subtitle": "Narxlar oldindan ochiq, mos qismni topib beramiz va navbatsiz yozilasiz.",
+    "cta": "Xizmatlarni ko'rish"
+  },
+  "services": {
+    "title": "Xizmatlar va narxlar",
+    "duration": "{{minutes}} daqiqa",
+    "price": "{{from}} – {{to}} so'm",
+    "empty": "Hozircha xizmatlar yo'q.",
+    "error": "Xizmatlarni yuklab bo'lmadi."
+  },
+  "common": { "loading": "Yuklanmoqda...", "comingSoon": "Tez orada" },
+  "notFound": { "title": "Sahifa topilmadi", "back": "Bosh sahifaga qaytish" },
+  "footer": "© {{year}} Car Service"
+}
