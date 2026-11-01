@@ -1,7 +1,9 @@
 using CarService.Domain.Entities;
+using CarService.Domain.ValueObjects;
 using CarService.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CarService.Infrastructure.Persistence.Seed;
@@ -29,6 +31,25 @@ public static class DbInitializer
                 new ServiceType { NameUz = "Kompyuter diagnostikasi", NameRu = "Компьютерная диагностика", DurationMinutes = 45, PriceFrom = 100_000, PriceTo = 150_000 },
                 new ServiceType { NameUz = "Tormoz kolodkasini almashtirish", NameRu = "Замена тормозных колодок", DurationMinutes = 60, PriceFrom = 80_000, PriceTo = 150_000 });
             await db.SaveChangesAsync();
+        }
+
+        await CatalogSeed.SeedAsync(db);
+
+        // Faqat sozlamada berilsa (Development'da) admin foydalanuvchi yaratiladi.
+        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+        var adminPhone = config["Seed:Admin:Phone"];
+        var adminPassword = config["Seed:Admin:Password"];
+        if (!string.IsNullOrWhiteSpace(adminPhone) && !string.IsNullOrWhiteSpace(adminPassword))
+        {
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var phone = PhoneNumber.Create(adminPhone).Value;
+            if (await userManager.FindByNameAsync(phone) is null)
+            {
+                var admin = new ApplicationUser { UserName = phone, PhoneNumber = phone, FullName = "Administrator" };
+                var result = await userManager.CreateAsync(admin, adminPassword);
+                if (result.Succeeded)
+                    await userManager.AddToRoleAsync(admin, Roles.Admin);
+            }
         }
     }
 }

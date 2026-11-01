@@ -9,6 +9,7 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 const navItems = [
   { to: '/', key: 'nav.home', end: true },
   { to: '/services', key: 'nav.services' },
+  { to: '/parts', key: 'nav.parts' },
 ] as const
 
 const currentYear = new Date().getFullYear()
