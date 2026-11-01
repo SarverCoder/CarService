@@ -32,3 +32,17 @@ public class VinCodeTests
     public void Create_rejects_invalid_vin(string raw) =>
         Assert.Throws<DomainException>(() => VinCode.Create(raw));
 }
+
+public class VinModelYearTests
+{
+    [Theory]
+    [InlineData("XWB3L32EDHA012345", 2017)]  // H = 2017
+    [InlineData("KMHD841CBMU123456", 2021)]  // M = 2021
+    [InlineData("XTA21099023184727", 2002)]  // 2 = 2032 → 30 yil oldin
+    public void GetModelYear_decodes_tenth_character(string vin, int expected) =>
+        Assert.Equal(expected, VinCode.Create(vin).GetModelYear(2026));
+
+    [Fact]
+    public void Wmi_is_first_three_characters() =>
+        Assert.Equal("XWB", VinCode.Create("XWB3L32EDHA012345").Wmi);
+}

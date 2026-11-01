@@ -1,10 +1,30 @@
 {
   "brand": "Car Service",
-  "nav": { "home": "Bosh sahifa", "services": "Xizmatlar", "parts": "Ehtiyot qismlar", "booking": "Yozilish" },
+  "nav": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "parts": "Ehtiyot qismlar",
+    "booking": "Yozilish"
+  },
   "home": {
     "title": "Mashinangiz uchun ishonchli ustaxona",
     "subtitle": "Narxlar oldindan ochiq, mos qismni topib beramiz va navbatsiz yozilasiz.",
-    "cta": "Xizmatlarni ko'rish"
+    "cta": "Xizmatlarni ko'rish",
+    "ctaParts": "Ehtiyot qism topish",
+    "features": {
+      "prices": {
+        "title": "Ochiq narxlar",
+        "text": "Har bir xizmat narxi oldindan ma'lum."
+      },
+      "parts": {
+        "title": "Mos qism",
+        "text": "Marka, model, yil yoki VIN bo'yicha qismni toping."
+      },
+      "booking": {
+        "title": "Onlayn yozilish",
+        "text": "Qulay vaqtni tanlang, navbat kutmang."
+      }
+    }
   },
   "services": {
     "title": "Xizmatlar va narxlar",
@@ -13,7 +33,61 @@
     "empty": "Hozircha xizmatlar yo'q.",
     "error": "Xizmatlarni yuklab bo'lmadi."
   },
-  "common": { "loading": "Yuklanmoqda...", "comingSoon": "Tez orada" },
-  "notFound": { "title": "Sahifa topilmadi", "back": "Bosh sahifaga qaytish" },
-  "footer": "© {{year}} Car Service"
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "comingSoon": "Tez orada"
+  },
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "back": "Bosh sahifaga qaytish"
+  },
+  "footer": "© {{year}} Car Service",
+  "parts": {
+    "title": "Ehtiyot qismlar",
+    "subtitle": "Mashinangizni tanlang yoki VIN kodni kiriting, faqat mos qismlar ko'rsatiladi.",
+    "vin": {
+      "label": "VIN kod (17 belgi)",
+      "decode": "VIN bo'yicha aniqlash",
+      "found": "Marka: {{brand}}, yil: {{year}}. Endi modelni tanlang.",
+      "unknownBrand": "Bu VIN ({{wmi}}) bo'yicha marka topilmadi. Markani o'zingiz tanlang.",
+      "invalid": "VIN kod noto'g'ri. 17 ta belgi bo'lishi kerak (I, O, Q harflarisiz)."
+    },
+    "filters": {
+      "brand": "Marka",
+      "model": "Model",
+      "year": "Yil",
+      "category": "Kategoriya",
+      "any": "Hammasi",
+      "search": "Qidirish",
+      "searchPlaceholder": "Nomi, artikul yoki ishlab chiqaruvchi",
+      "reset": "Tozalash"
+    },
+    "found_one": "{{count}} ta qism topildi",
+    "found_other": "{{count}} ta qism topildi",
+    "empty": "Bu filtrlar bo'yicha qism topilmadi.",
+    "error": "Qismlarni yuklab bo'lmadi.",
+    "notFound": "Qism topilmadi.",
+    "inStock": "Omborda bor",
+    "outOfStock": "Omborda yo'q",
+    "original": "Original",
+    "analog": "Analog",
+    "price": "{{price}} so'm",
+    "sku": "Artikul",
+    "manufacturer": "Ishlab chiqaruvchi",
+    "stock": "Omborda",
+    "stockCount_one": "{{count}} dona",
+    "stockCount_other": "{{count}} dona",
+    "warranty_one": "{{count}} oy kafolat",
+    "warranty_other": "{{count}} oy kafolat",
+    "addToCart": "Savatga qo'shish",
+    "backToCatalog": "Katalogga qaytish",
+    "pagination": "Sahifalar",
+    "page": "{{page}} / {{total}}",
+    "compatibility": {
+      "title": "Qaysi mashinalarga mos",
+      "years": "Yillar",
+      "present": "hozirgacha",
+      "empty": "Moslik ma'lumoti hali kiritilmagan."
+    }
+  }
 }

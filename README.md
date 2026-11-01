@@ -74,4 +74,21 @@ cd client && npm run lint && npm run build
 | POST | `/api/auth/login` | Kirish, JWT qaytaradi |
 | GET | `/api/auth/me` | Joriy foydalanuvchi (token kerak) |
 | GET | `/api/services` | Xizmatlar va narx oralig'i |
+| GET | `/api/catalog/brands` | Markalar va ularning modellari |
+| GET | `/api/catalog/categories` | Qism kategoriyalari (daraxt, `parentId` bilan) |
+| GET | `/api/catalog/vin/{vin}` | VIN'dan marka va model yilini aniqlash |
+| GET | `/api/parts` | Qism qidirish: `brandId`, `carModelId`, `year`, `categoryId`, `search`, `page`, `pageSize` (≤ 100) |
+| GET | `/api/parts/{id}` | Qism ma'lumoti va qaysi mashinalarga mosligi |
+| POST | `/api/parts/import` | CSV import, `file` maydoni (faqat Admin) |
 | GET | `/health` | Holat tekshiruvi |
+
+### Qismlarni CSV'dan import qilish
+
+Excel'da jadvalni "Saqlash → CSV" orqali saqlang (ajratuvchi `;` yoki `,` bo'lishi mumkin). Namuna: [`docs/parts-import-sample.csv`](docs/parts-import-sample.csv).
+
+- Majburiy ustunlar: `Sku`, `Name`, `Category`, `Manufacturer`, `Price`. Qo'shimcha: `IsOriginal` (ha/yo'q), `WarrantyMonths`, `StockQuantity`, `ImageUrl`, `Compatibility`.
+- `Compatibility`: `Marka:Model:2013-2023`, bir nechtasi `|` bilan; oxirgi yil bo'sh bo'lsa (`2013-`) hozirgacha.
+- Bir xil `Sku` qayta yuklansa, qism yangilanadi. Yangi kategoriya, marka va modellar avtomatik yaratiladi.
+- Xato qatorlar o'tkazib yuboriladi va javobdagi `errors` ro'yxatida qator raqami bilan ko'rsatiladi.
+
+Development rejimida admin foydalanuvchi `appsettings.Development.json` dagi `Seed:Admin` sozlamasidan yaratiladi. Bo'sh bazaga namunaviy katalog (Chevrolet, Kia, Hyundai modellari va 13 ta qism) qo'shiladi.
